@@ -8,8 +8,8 @@ app = Flask(__name__)
 def check_db_connection():
     # 1. Dynamically read the environment variables we bound earlier
     db_host = os.environ.get('DB_HOST', 'db-service')
-    db_name = os.environ.get('DB_NAME', 'myappdb')
-    db_user = os.environ.get('DB_USER', 'admin')
+    db_name = os.environ.get('DB_NAME', 'sampledb')
+    db_user = os.environ.get('DB_USER', 'userQBW')
     db_pass = os.environ.get('DB_PASS') # Pulled securely from Secret
 
     connection_status = False
