@@ -7,10 +7,11 @@ app = Flask(__name__)
 @app.route('/')
 def check_db_connection():
     # 1. Dynamically read the environment variables we bound earlier
-    db_host = os.environ.get('DB_HOST', 'db-service')
-    db_name = os.environ.get('DB_NAME', 'sampledb')
-    db_user = os.environ.get('DB_USER', 'userQBW')
-    db_pass = os.environ.get('DB_PASS') # Pulled securely from Secret
+    # 1. Dynamically read environment variables, using your real OpenShift values as defaults
+    db_host = os.environ.get('DB_HOST', 'postgresql') 
+    db_name = os.environ.get('DB_NAME', 'sampledb')   
+    db_user = os.environ.get('DB_USER', 'userQBW')   
+    db_pass = os.environ.get('DB_PASS', 'kdjyFqUddfKcbfsa') # <-- Added comma and fixed key
 
     connection_status = False
     details_message = ""
@@ -18,7 +19,8 @@ def check_db_connection():
     # 2. Attempt to open a connection to the relational database
     try:
         conn = psycopg2.connect(
-            host=db_host,
+            # host=db_host
+            host= db_host,
             database=db_name,
             user=db_user,
             password=db_pass,
