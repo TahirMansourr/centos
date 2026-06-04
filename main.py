@@ -7,10 +7,11 @@ app = Flask(__name__)
 @app.route('/')
 def check_db_connection():
     # 1. Dynamically read the environment variables we bound earlier
-    db_host = os.environ.get('DATABASE_HOST', 'postgresql') 
-    db_name = os.environ.get('DB_DATABASE_NAME')   
-    db_user = os.environ.get('DB_DATABASE_USER')   
-    db_pass = os.environ.get('DB_DATABASE_PASSWORD')
+    # 1. Dynamically read environment variables, using your real OpenShift values as defaults
+    db_host = os.environ.get('DB_HOST', 'postgresql') 
+    db_name = os.environ.get('DB_NAME', 'sampledb')   
+    db_user = os.environ.get('DB_USER', 'userQBW')   
+    db_pass = os.environ.get('DB_PASS', 'kdjyFqUddfKcbfsa') # <-- Added comma and fixed key
 
     connection_status = False
     details_message = ""
