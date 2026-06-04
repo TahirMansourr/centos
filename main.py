@@ -19,7 +19,8 @@ def check_db_connection():
     # 2. Attempt to open a connection to the relational database
     try:
         conn = psycopg2.connect(
-            host=db_host,
+            # host=db_host
+            host= 'postgresql',
             database=db_name,
             user=db_user,
             password=db_pass,
